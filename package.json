@@ -30,7 +30,7 @@
     "api",
     "compiler",
     "compilation",
-    "social compiler",
+    "social compiler"
   ],
   "bugs": {
     "url": "https://github.com/planeshifter/node-wandbox-api/issues"
