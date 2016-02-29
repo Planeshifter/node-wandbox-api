@@ -17,9 +17,9 @@ vector<double> linspace( double start, double end, int num ) {
 void print_vector( vector<double> vec, bool last = false ) {
 	cout << "[";
 	for ( vector<double>::iterator it = vec.begin(); it != vec.end() - 1; it++ ) {
-		cout << *it << ", ";
+		cout << setprecision (16) << *it << ", ";
 	}
-	cout << *vec.end();
+	cout << setprecision (16) << *vec.end();
 	cout << "]";
 	if ( last == false ) {
 		cout << ",";
