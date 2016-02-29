@@ -1,0 +1,16 @@
+
+Usage: runWandbox [options] src
+
+Options:
+
+  -h,  --help                Print this message.
+  -V,  --version             Print the package version.
+       --file                Boolean indicating whether src is a file path or code to be evaluated. Default: false.
+       --compiler            Name of used compiler. Default: gcc-head.
+       --options             Used options for a compiler joined by comma. Default: boost-1.60,warning,gnu++1y.
+       --codes               Additional codes, objects with `file` and `code` keys. Default: [].
+       --save                Boolean indicating whether permanent link should be generated. Default: false.
+       --stdin               Standard input.
+       --compiler-option-raw Additional compile-time options joined by line-break. Default: "".
+       --runtime-option-raw  Additional run-time options joined by line-break. Default: "".
+  -o,  --output file          Output file path.

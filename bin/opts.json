@@ -1,0 +1,25 @@
+{
+	"string": [
+		"compiler",
+		"options",
+		"codes",
+		"stdin",
+		"compiler-option-raw",
+		"runtime-option-raw",
+		"output"
+	],
+	"boolean": [
+		"file",
+		"save",
+		"help",
+		"version"
+	],
+	"alias": {
+		"help": [
+			"h"
+		],
+		"version": [
+			"V"
+		]
+	}
+}

@@ -1,0 +1,137 @@
+#!/usr/bin/env node
+'use strict';
+
+// MODULES //
+
+var fs = require( 'fs' );
+var path = require( 'path' );
+var parseArgs = require( 'minimist' );
+var notifier = require( 'update-notifier' );
+var pkg = require( './../package.json' );
+var opts = require( './opts.json' );
+var file = require( './../lib/file.js' );
+var string = require( './../lib/string.js' );
+
+// VARIABLES //
+
+var code;
+var args;
+
+
+// FUNCTIONS //
+
+/**
+* FUNCTION: onClose()
+*	Callback invoked upon writing a file to `stdout`.
+*
+* @private
+*/
+function onClose() {
+	process.exit( 0 );
+}
+
+
+// INIT //
+
+process.stdout.on( 'error', process.exit );
+
+
+// PACKAGE UPDATES //
+
+notifier( { 'pkg': pkg } ).notify();
+
+
+// ARGUMENTS //
+
+args = parseArgs( process.argv.slice( 2 ), opts );
+
+
+// HELP //
+
+if ( args.help ) {
+	fs.createReadStream( path.join( __dirname, 'usage.txt' ) )
+		.pipe( process.stdout )
+		.on( 'close', onClose );
+    return;
+}
+
+
+// VERSION //
+
+if ( args.version ) {
+	console.log( pkg.version );
+	return;
+}
+
+
+// OPTIONS //
+
+opts = {};
+
+code =  args._[ 0 ];
+
+if ( args.compiler ) {
+	opts.compiler = args.compiler;
+}
+
+if ( args.codes ) {
+	opts.codes = args.codes;
+}
+
+if ( args.options ) {
+	opts.options = args.options;
+}
+
+if ( args.stdin ) {
+	opts.stdin = args.stdin;
+}
+
+if ( args[ 'compiler-option-raw' ] ) {
+	opts[ 'compiler-option-raw' ] = args[ 'compiler-option-raw' ];
+}
+
+if ( args[ 'runtime-option-raw' ] ) {
+	opts[ 'runtime-option-raw' ] = args[ 'runtime-option-raw' ];
+}
+
+if ( args.save ) {
+	opts.save = args.save;
+}
+
+// RUN CODE //
+
+if ( args.file === true ) {
+	if ( args.output ) {
+		file( args.output, code, opts, clbk );
+	} else {
+		file( code, opts, clbk );
+	}
+} else {
+	if ( args.output ) {
+		string( args.output, code, opts, clbk );
+	} else {
+		string( code, opts, clbk );
+	}
+}
+
+/**
+* FUNCTION: clbk( error, data, info )
+*	Callback invoked upon receiving a request response.
+*
+* @private
+* @param {Error|Null} error - error object
+* @param {Object} message - an http.IncomingMessage
+* @param {Object} body - response body
+* @returns {Void}
+*/
+function clbk( error, body ) {
+	if ( error ) {
+		process.stderr.write( error.message );
+		return;
+	}
+	if ( !args.output ) {
+		process.stdout.write( JSON.stringify( body ) + '\n' );
+	} else {
+		process.stdout.write( 'File with results successfully written. \n' );
+	}
+}
