@@ -1,0 +1,9 @@
+{
+	"compiler": "gcc-head",
+	"codes": [],
+	"options": "boost-1.60,warning,gnu++1y",
+	"stdin": "",
+	"compiler-option-raw": "",
+	"runtime-option-raw": "",
+	"save": false
+}
