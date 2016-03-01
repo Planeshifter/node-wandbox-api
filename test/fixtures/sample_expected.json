@@ -1,0 +1,7 @@
+{
+  "compiler_error": "prog.cc: In function 'int main()':\n<command-line>:0:3: warning: unused variable 'hogefuga' [-Wunused-variable]\nprog.cc:4:6: note: in expansion of macro 'x'\n  int x = 0;\n      ^\n",
+  "compiler_message": "prog.cc: In function 'int main()':\n<command-line>:0:3: warning: unused variable 'hogefuga' [-Wunused-variable]\nprog.cc:4:6: note: in expansion of macro 'x'\n  int x = 0;\n      ^\n",
+  "program_message": "hoge\n",
+  "program_output": "hoge\n",
+  "status": "0"
+}
