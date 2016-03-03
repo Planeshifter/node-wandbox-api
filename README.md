@@ -56,11 +56,11 @@ in which case `res` will hold the results from running the code on Wandbox. Acco
 *	__compiler_message__: merged messages compiler_output and compiler_error
 *	__program_output__: stdout at runtime
 *	__program_error__: stderr at runtime
-*	__program_message: merged messages program_output and program_error
+*	__program_message__: merged messages program_output and program_error
 
 If `save` option is set to true, the result in addition have the following key-value pairs:
 
-*	__permlink: permlink you can pass to GET /permlink/:link.
+*	__permlink__: permlink you can pass to GET /permlink/:link.
 *	__url__ URL to display on browser.
 
 #### runWandbox.fromString( [dest,] code[, opts][, clbk] )
@@ -293,8 +293,8 @@ Copyright &copy; 2016. Philipp Burckhardt.
 [npm-image]: http://img.shields.io/npm/v/wandbox-api.svg
 [npm-url]: https://npmjs.org/package/wandbox-api
 
-[build-image]: http://img.shields.io/travis/kgryte/node-wandbox-api/master.svg
-[build-url]: https://travis-ci.org/kgryte/node-wandbox-api
+[build-image]: http://img.shields.io/travis/planeshifter/node-wandbox-api/master.svg
+[build-url]: https://travis-ci.org/planeshifter/node-wandbox-api
 
 [coverage-image]: https://img.shields.io/codecov/c/github/planeshifter/node-wandbox-api/master.svg
 [coverage-url]: https://codecov.io/github/planeshifter/node-wandbox-api?branch=master
