@@ -119,6 +119,19 @@ tape( 'the function runs a source code file on Wandbox and saves results to file
 	}
 });
 
+tape( 'the function runs a source code file on Wandbox and saves results to file without invoking callback', function test( t ) {
+	var outFile;
+	var outDir;
+
+	outDir = path.resolve( __dirname, '..', 'build/'+(new Date()).getTime() );
+	outFile = path.join( outDir, 'output.json' );
+
+	mkdirp.sync( outDir );
+	runWandbox( outFile, './test/fixtures/gamma.cpp' );
+
+	t.end();
+});
+
 tape( 'the function runs a source code file on Wandbox', function test( t ) {
 	runWandbox( './test/fixtures/gamma.cpp', done );
 

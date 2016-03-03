@@ -124,6 +124,19 @@ tape( 'the function runs a source code string on Wandbox and saves results to fi
 	}
 });
 
+tape( 'the function runs a source code string on Wandbox and saves results to file without invoking callback', function test( t ) {
+	var outFile;
+	var outDir;
+
+	outDir = path.resolve( __dirname, '..', 'build/'+(new Date()).getTime() );
+	outFile = path.join( outDir, 'output.json' );
+
+	mkdirp.sync( outDir );
+	runWandbox( outFile, gamma );
+
+	t.end();
+});
+
 tape( 'the function runs a source code string on Wandbox', function test( t ) {
 	runWandbox( gamma, done );
 
