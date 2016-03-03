@@ -39,7 +39,6 @@ void print_results( vector<double> data, vector<double> expected ) {
 }
 
 int main() {
-
 	vector<double> x = linspace( 1.0, 10.0, 100 );
 	vector<double> expected;
 
@@ -48,6 +47,5 @@ int main() {
 	}
 
 	print_results( x, expected );
-
 	return 0;
 }

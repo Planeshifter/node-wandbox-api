@@ -3,16 +3,19 @@
 var runWandbox = require( './../lib' );
 
 // String:
+
 var code = '#include <iostream>\nint main() {\n\tstd::cout << "All is well" << std::endl;}';
 runWandbox.fromString( code, clbk );
 
 // File:
-runWandbox( './examples/fixtures/output.json', './examples/fixtures/code.cpp', clbk );
 
-function clbk( error, results, info ) {
-	if ( info ) {
-		console.error( info );
-	}
+// Pass result to callback function...
+runWandbox( './examples/fixtures/code.cpp', clbk );
+
+// Save output to file...
+runWandbox( './examples/fixtures/output.json', './examples/fixtures/code.cpp' );
+
+function clbk( error, results ) {
 	if ( error ) {
 		throw new Error( error.message );
 	}
