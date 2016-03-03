@@ -293,8 +293,8 @@ Copyright &copy; 2016. Philipp Burckhardt.
 [npm-image]: http://img.shields.io/npm/v/wandbox-api.svg
 [npm-url]: https://npmjs.org/package/wandbox-api
 
-[build-image]: http://img.shields.io/travis/planeshifter/node-wandbox-api/master.svg
-[build-url]: https://travis-ci.org/planeshifter/node-wandbox-api
+[build-image]: http://img.shields.io/travis/Planeshifter/node-wandbox-api/master.svg
+[build-url]: https://travis-ci.org/Planeshifter/node-wandbox-api
 
 [coverage-image]: https://img.shields.io/codecov/c/github/planeshifter/node-wandbox-api/master.svg
 [coverage-url]: https://codecov.io/github/planeshifter/node-wandbox-api?branch=master
