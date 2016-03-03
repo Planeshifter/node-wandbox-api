@@ -44,7 +44,7 @@
     "utils-copy": "^1.1.0",
     "utils-cwd": "^2.0.0",
     "utils-fs-read-file": "^1.0.0",
-    "utils-merge2": "^1.0.0",
+    "utils-merge2": "2.x.x",
     "validate.io-boolean-primitive": "^1.0.0",
     "validate.io-function": "^1.0.2",
     "validate.io-object": "^1.0.4",
@@ -52,13 +52,17 @@
     "validate.io-string-primitive": "^1.0.0"
   },
   "devDependencies": {
+    "@kgryte/noop": "^1.0.0",
     "chai": "3.x.x",
     "codecov": "1.x.x",
     "istanbul": "^0.4.1",
     "jshint": "2.x.x",
     "jshint-stylish": "2.x.x",
+    "mkdirp": "^0.5.1",
+    "proxyquire": "^1.7.4",
     "tap-spec": "4.x.x",
-    "tape": "4.x.x"
+    "tape": "4.x.x",
+    "utils-fs-exists": "^1.0.1"
   },
   "license": "MIT"
 }
