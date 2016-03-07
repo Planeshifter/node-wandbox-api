@@ -296,17 +296,17 @@ Copyright &copy; 2016. Philipp Burckhardt.
 [build-image]: http://img.shields.io/travis/Planeshifter/node-wandbox-api/master.svg
 [build-url]: https://travis-ci.org/Planeshifter/node-wandbox-api
 
-[coverage-image]: https://img.shields.io/codecov/c/github/planeshifter/node-wandbox-api/master.svg
-[coverage-url]: https://codecov.io/github/planeshifter/node-wandbox-api?branch=master
+[coverage-image]: https://img.shields.io/codecov/c/github/Planeshifter/node-wandbox-api/master.svg
+[coverage-url]: https://codecov.io/github/Planeshifter/node-wandbox-api?branch=master
 
-[dependencies-image]: http://img.shields.io/david/planeshifter/node-wandbox-api.svg
-[dependencies-url]: https://david-dm.org/planeshifter/node-wandbox-api
+[dependencies-image]: http://img.shields.io/david/Planeshifter/node-wandbox-api.svg
+[dependencies-url]: https://david-dm.org/Planeshifter/node-wandbox-api
 
-[dev-dependencies-image]: http://img.shields.io/david/dev/planeshifter/node-wandbox-api.svg
-[dev-dependencies-url]: https://david-dm.org/dev/planeshifter/node-wandbox-api
+[dev-dependencies-image]: http://img.shields.io/david/dev/Planeshifter/node-wandbox-api.svg
+[dev-dependencies-url]: https://david-dm.org/dev/Planeshifter/node-wandbox-api
 
-[github-issues-image]: http://img.shields.io/github/issues/planeshifter/node-wandbox-api.svg
-[github-issues-url]: https://github.com/planeshifter/node-wandbox-api/issues
+[github-issues-image]: http://img.shields.io/github/issues/Planeshifter/node-wandbox-api.svg
+[github-issues-url]: https://github.com/Planeshifter/node-wandbox-api/issues
 
 [tape]: https://github.com/substack/tape
 [istanbul]: https://github.com/gotwarlost/istanbul
