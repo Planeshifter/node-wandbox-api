@@ -13,7 +13,7 @@ runWandbox.fromString( code, clbk );
 runWandbox( './examples/fixtures/code.cpp', clbk );
 
 // Save output to file...
-runWandbox( './examples/fixtures/output.json', './examples/fixtures/code.cpp' );
+runWandbox( './examples/fixtures/output.json', './examples/fixtures/code.cpp', clbk );
 
 function clbk( error, results ) {
 	if ( error ) {

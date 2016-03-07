@@ -18,10 +18,10 @@ $ npm install wandbox-api
 var runWandbox = require( 'wandbox-api' );
 ```
 
-#### runWandbox( [dest,] src[, opts][, clbk] )
+#### runWandbox( [dest,] src[, opts], clbk )
 
-Compile and run programs on [Wandbox][wandbox]. `src` has to be the path of the source file that Wandbox should compile. Results of API call are either passed to `clbk`, a callback function which
-has an `error` and `result` parameter, and/or saved to the file specified in `dest`. To change the default compiler options, an options object can be supplied (`opts`).
+Compile and run programs on [Wandbox][wandbox]. `src` has to be the path of the source file that Wandbox should compile. Results of API call are passed to `clbk`, a callback function which
+has an `error` and `result` parameter, and optionally saved to the file specified in `dest`. To change the default compiler options, an options object can be supplied (`opts`).
 
 ``` javascript
 /* FILE: code.cpp
@@ -34,16 +34,22 @@ has an `error` and `result` parameter, and/or saved to the file specified in `de
 // Pass results to callback function...
 runWandbox( './code.cpp', clbk );
 
-// Save results to JSON file
-runWandbox( './output.json', '/code.cpp' );
+// Save results to JSON file...
+runWandbox( './output.json', '/code.cpp', clbk );
 
-/* OUTPUT:
-	{
-		program_message: 'All is well\n',
-		program_output: 'All is well\n',
-		status: '0'
+function clbk( error, results ) {
+	if ( error ) {
+		throw new Error( error.message );
 	}
-*/
+	var out = results;
+	/* OUTPUT:
+		{
+			program_message: 'All is well\n',
+			program_output: 'All is well\n',
+			status: '0'
+		}
+	*/
+}
 ```
 
 Per Node.js convention, the callback function receives two arguments: `err` and `res`. `err` will be an `error` object in case the GET request is not successful and `null` otherwise,
@@ -63,7 +69,7 @@ If `save` option is set to true, the result in addition have the following key-v
 *	__permlink__: permlink you can pass to GET /permlink/:link.
 *	__url__ URL to display on browser.
 
-#### runWandbox.fromString( [dest,] code[, opts][, clbk] )
+#### runWandbox.fromString( [dest,] code[, opts], clbk )
 
 Directly compile and execute code in a source code `string`.
 
@@ -92,8 +98,8 @@ To specify which compiler to use, set the `compiler` option.
 ```javascript
 var code = 'print("I can also run Python.")';
 
-runWandbox.fromString( code, { 'compiler': 'python-3.5.0' }, function( err, res ) {
-	var out = res;
+runWandbox.fromString( code, { 'compiler': 'python-3.5.0' }, function clbk( errror, results ) {
+	var out = results;
 	/*
 		{
 			program_message: 'I can also run Python.\n',
@@ -101,7 +107,7 @@ runWandbox.fromString( code, { 'compiler': 'python-3.5.0' }, function( err, res 
 			status: '0'
 		}
 	*/
-})
+});
 ```
 
 To specify compile options, supply a comma-separated list to `options`.
@@ -109,7 +115,7 @@ To specify compile options, supply a comma-separated list to `options`.
 ```javascript
 var code = '#include <iostream>\r\n int main() { int x = 0; std::cout << "hoge" << std::endl; }';
 
-runWandbox.fromString( code, { 'options': 'warning,gnu++1y' }, function( err, res ) {
+runWandbox.fromString( code, { 'options': 'warning,gnu++1y' }, function clbk( error, results ) {
 	var out = res;
 	/*
 		{ compiler_error: 'prog.cc: In function \'int main()\':\nprog.cc:2:19: warning: unused variable \'x\' [-Wunused-variable]\n  int main() { int x = 0; std::cout << "hoge" << std::endl; }\n                   ^\n',
@@ -118,7 +124,7 @@ runWandbox.fromString( code, { 'options': 'warning,gnu++1y' }, function( err, re
 		  program_output: 'hoge\n',
 		  status: '0' }
 	*/
-})
+});
 ```
 
 To generate a permanent link to the compiled program, set `save` to `true`.
@@ -128,8 +134,8 @@ var code = 'print("I can also run Python.")';
 runWandbox.fromString( code, {
 	'compiler': 'python-3.5.0',
 	'save': true
-}, function( err, res ) {
-	var out = res;
+}, function clbk( error, results ) {
+	var out = results;
 	/*
 		{
 			permlink: 'hcx4qh0WIkX2YDps',
@@ -139,7 +145,7 @@ runWandbox.fromString( code, {
 			url: 'http://melpon.org/wandbox/permlink/hcx4qh0WIkX2YDps'
 		}
 	*/
-})
+});
 ```
 
 ---
@@ -159,7 +165,7 @@ runWandbox.fromString( code, clbk );
 runWandbox( './examples/fixtures/code.cpp', clbk );
 
 // Save output to file...
-runWandbox( './examples/fixtures/output.json', './examples/fixtures/code.cpp' );
+runWandbox( './examples/fixtures/output.json', './examples/fixtures/code.cpp', clbk );
 
 function clbk( error, results ) {
 	if ( error ) {
