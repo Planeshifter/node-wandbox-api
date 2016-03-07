@@ -6,8 +6,8 @@ using namespace std;
 
 vector<double> linspace( double start, double end, int num ) {
 	double delta = (end - start) / (num - 1);
-	vector<double> arr( num );
-	for ( int i = 0; i < num; ++i ){
+	vector<double> arr( num - 1 );
+	for ( int i = 0; i < num - 1; ++i ){
 		arr[ i ] = start + delta * i;
 	}
 	arr.push_back( end );
