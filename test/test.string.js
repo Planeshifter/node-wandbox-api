@@ -116,7 +116,7 @@ tape( 'the function runs a source code string on Wandbox and saves results to fi
 			return t.end();
 		}
 		bool = exists.sync( outFile );
-		t.ok( bool, 'outpit file exists' );
+		t.ok( bool, 'output file exists' );
 
 		assert.deepEqual( res, sampleExpected );
 
