@@ -1,6 +1,6 @@
 Node Wandbox API
 ===
-[![NPM version][npm-image]][npm-url] [![Dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url]
 
 > Access Social Compilation Service [Wandbox][wandbox] via API from Node.js.
 
@@ -293,7 +293,7 @@ $ make view-browser-tests
 
 ## Copyright
 
-Copyright &copy; 2016. Philipp Burckhardt.
+Copyright &copy; 2021. Chris Barwick.
 
 
 [npm-image]: http://img.shields.io/npm/v/wandbox-api-updated.svg
