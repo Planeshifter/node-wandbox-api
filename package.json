@@ -1,10 +1,10 @@
 {
-  "name": "wandbox-api",
-  "version": "0.0.0",
+  "name": "wandbox-api-updated",
+  "version": "0.1.1",
   "description": "Node.js bindings to the Wandbox API.",
   "author": {
-    "name": "Philipp Burckhardt",
-    "email": "pburckhardt@outlook.com"
+    "name": "Chris Barwick",
+    "email": "chris.barwick16@gmail.com"
   },
   "contributors": [
     {
@@ -23,7 +23,7 @@
   "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "git://github.com/planeshifter/node-wandbox-api.git"
+    "url": "git://github.com/TinyPandas/node-wandbox-api.git"
   },
   "keywords": [
     "wandbox",
@@ -33,7 +33,7 @@
     "social compiler"
   ],
   "bugs": {
-    "url": "https://github.com/planeshifter/node-wandbox-api/issues"
+    "url": "https://github.com/TinyPandas/node-wandbox-api/issues"
   },
   "dependencies": {
     "debug": "^2.2.0",
