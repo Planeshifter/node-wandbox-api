@@ -152,7 +152,7 @@ runWandbox.fromString( code, {
 ## Examples
 
 ``` javascript
-var runWandbox = require( 'wandbox-api-update' );
+var runWandbox = require( 'wandbox-api-updated' );
 
 // String:
 
@@ -297,7 +297,7 @@ Copyright &copy; 2021. Chris Barwick.
 
 
 [npm-image]: http://img.shields.io/npm/v/wandbox-api-updated.svg
-[npm-url]: https://npmjs.org/package/wandbox-api-update
+[npm-url]: https://npmjs.org/package/wandbox-api-updated
 
 [tape]: https://github.com/substack/tape
 [istanbul]: https://github.com/gotwarlost/istanbul
