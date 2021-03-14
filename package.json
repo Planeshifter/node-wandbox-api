@@ -1,6 +1,6 @@
 {
   "name": "wandbox-api-updated",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Node.js bindings to the Wandbox API.",
   "author": {
     "name": "Chris Barwick",
