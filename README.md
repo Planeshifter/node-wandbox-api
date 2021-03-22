@@ -303,7 +303,7 @@ Copyright &copy; 2021. Chris Barwick.
 [build-url]: https://travis-ci.org/github/TinyPandas/node-wandbox-api
 
 [dependencies-image]: http://img.shields.io/david/TinyPandas/node-wandbox-api.svg
-[dependencies-url]: https://david-dm.org/TinyPandas/node-wandbox-api.svg
+[dependencies-url]: https://david-dm.org/TinyPandas/node-wandbox-api
 
 [tape]: https://github.com/substack/tape
 [istanbul]: https://github.com/gotwarlost/istanbul
