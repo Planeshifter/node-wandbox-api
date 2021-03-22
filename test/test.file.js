@@ -84,7 +84,7 @@ tape( 'the function runs a source code file on Wandbox and saves results to file
 		bool = exists.sync( outFile );
 		t.ok( bool, 'converted file exists' );
 
-		assert.deepEqual( res, gammaExpected );
+		assert.deepEqual( JSON.parse(res), gammaExpected );
 
 		t.end();
 	}
@@ -113,7 +113,7 @@ tape( 'the function runs a source code file on Wandbox and saves results to file
 		bool = exists.sync( outFile );
 		t.ok( bool, 'output file exists' );
 
-		assert.deepEqual( res, sampleExpected );
+		assert.deepEqual( JSON.parse(res), sampleExpected );
 
 		t.end();
 	}
