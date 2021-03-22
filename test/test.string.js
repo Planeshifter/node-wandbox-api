@@ -89,7 +89,7 @@ tape( 'the function runs a source code string on Wandbox and saves results to fi
 		bool = exists.sync( outFile );
 		t.ok( bool, 'converted file exists' );
 
-		assert.deepEqual( res, gammaExpected );
+		assert.deepEqual( JSON.parse(res), gammaExpected );
 
 		t.end();
 	}
@@ -104,7 +104,7 @@ tape( 'the function runs a source code string on Wandbox and saves results to fi
 
 	mkdirp.sync( outDir );
 	runWandbox( outFile, sample, {
-		'options': 'warning,gnu++1y',
+		'options': 'warning,gnu++14',
 		'compiler': 'gcc-head',
 		'compiler-option-raw': '-Dx=hogefuga\n-O3'
 	}, done );
@@ -118,7 +118,7 @@ tape( 'the function runs a source code string on Wandbox and saves results to fi
 		bool = exists.sync( outFile );
 		t.ok( bool, 'output file exists' );
 
-		assert.deepEqual( res, sampleExpected );
+		assert.deepEqual( JSON.parse(res), sampleExpected );
 
 		t.end();
 	}
@@ -147,7 +147,6 @@ tape( 'the function runs a source code string on Wandbox (options)', function te
 			return t.end();
 		}
 		t.equal( typeof res, 'object', 'returns an object' );
-
 
 		// Result object has `permlink` and `url` keys since `save=true`...
 		t.equal( typeof res.permlink, 'string', 'object has `permlink` key' );

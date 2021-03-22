@@ -1,6 +1,6 @@
 Node Wandbox API
 ===
-[![NPM version][npm-image]][npm-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][build-image]][build-url] [![Dependencies][dependencies-image]][dependencies-url]
 
 > Access Social Compilation Service [Wandbox][wandbox] via API from Node.js.
 
@@ -298,6 +298,12 @@ Copyright &copy; 2021. Chris Barwick.
 
 [npm-image]: http://img.shields.io/npm/v/wandbox-api-updated.svg
 [npm-url]: https://npmjs.org/package/wandbox-api-updated
+
+[build-image]: http://img.shields.io/travis/Planeshifter/node-wandbox-api/master.svg
+[build-url]: https://travis-ci.org/Planeshifter/node-wandbox-api
+
+[dependencies-image]: http://img.shields.io/david/Planeshifter/node-wandbox-api.svg
+[dependencies-url]: https://david-dm.org/Planeshifter/node-wandbox-api
 
 [tape]: https://github.com/substack/tape
 [istanbul]: https://github.com/gotwarlost/istanbul

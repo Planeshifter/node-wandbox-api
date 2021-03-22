@@ -1,7 +1,7 @@
 {
 	"compiler": "gcc-head",
 	"codes": [],
-	"options": "boost-1.60,warning,gnu++1y",
+	"options": "boost-1.73.0-gcc-head,warning,gnu++14",
 	"stdin": "",
 	"compiler-option-raw": "",
 	"runtime-option-raw": "",
