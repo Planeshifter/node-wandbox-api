@@ -157,17 +157,7 @@ tape( 'the function runs a source code string on Wandbox (options)', function te
 });
 
 tape( 'the function calls callback with an error if Wandbox API does not respond to request', function test( t ) {
-	var failingRequest = {
-		'post': function( url, opts, clbk ) {
-			setTimeout( onTimeout, 0 );
-			function onTimeout() {
-				clbk( new Error( 'beep' ) );
-			}
-		}
-	};
-
-	var runWandboxCorrupted = proxyquire( './../lib/string.js', { request: failingRequest } );
-	runWandboxCorrupted( gamma, done );
+	runWandbox( gamma, {'timeout': 0}, done);
 
 	function done( error ) {
 		t.equal( error instanceof Error, true, 'returns an error object' );
