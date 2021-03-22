@@ -299,11 +299,11 @@ Copyright &copy; 2021. Chris Barwick.
 [npm-image]: http://img.shields.io/npm/v/wandbox-api-updated.svg
 [npm-url]: https://npmjs.org/package/wandbox-api-updated
 
-[build-image]: http://img.shields.io/travis/Planeshifter/node-wandbox-api/master.svg
-[build-url]: https://travis-ci.org/Planeshifter/node-wandbox-api
+[build-image]: http://img.shields.io/travis/TinyPandas/node-wandbox-api/master.svg
+[build-url]: https://travis-ci.org/github/TinyPandas/node-wandbox-api
 
-[dependencies-image]: http://img.shields.io/david/Planeshifter/node-wandbox-api.svg
-[dependencies-url]: https://david-dm.org/Planeshifter/node-wandbox-api
+[dependencies-image]: http://img.shields.io/david/TinyPandas/node-wandbox-api.svg
+[dependencies-url]: https://david-dm.org/TinyPandas/node-wandbox-api.svg
 
 [tape]: https://github.com/substack/tape
 [istanbul]: https://github.com/gotwarlost/istanbul
