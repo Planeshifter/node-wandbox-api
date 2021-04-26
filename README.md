@@ -11,6 +11,35 @@ Node Wandbox API
 $ npm install wandbox-api-updated
 ```
 
+## V2 Usage
+``` javascript
+var { fromFileV2, fromStringV2 } = require( 'wandbox-api-updated' );
+```
+
+#### fromFileV2( srcFile, opts, clbk [, dest] )
+#### fromStringV2( opts, clbk [, dest])
+
+With opts now being required for `fromStringV2`, setting `opts.code` to the `src` is replacing the `code` parameter of `runWandbox`.
+
+## fromStringV2 Example
+``` javascript
+const runWandbox = require('../lib/index');
+
+let res = runWandbox.fromStringv2(
+	{
+		compiler: "lua-5.4.0",
+		codes: [],
+		options: "",
+		code: "print 'Hello, Wandbox!'",
+		save: false,
+		timeout: 30000
+	},
+	function done(error, res) {
+		console.log(error);
+		console.log(res);
+	}
+);
+```
 
 ## Usage
 
