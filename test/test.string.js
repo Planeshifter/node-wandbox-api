@@ -147,7 +147,6 @@ tape( 'the function runs a source code string on Wandbox', function test( t ) {
 });
 
 tape( 'the function runs a source code string on Wandbox (v2)', function test( t ) {
-	//string_v2( gamma, done );
 	var opts = copy ( require('../lib/defaults.json') );
 	opts.code = gamma;
 	string_v2(opts, done);
