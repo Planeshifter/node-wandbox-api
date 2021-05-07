@@ -2,7 +2,7 @@ const runWandbox = require('../lib/index');
 
 let res = runWandbox.fromStringV2(
 	{
-		compiler: "lua-5.4.0",
+		compiler: "lua-5.4.1",
 		codes: [],
 		options: "",
 		save: true,
@@ -14,3 +14,7 @@ let res = runWandbox.fromStringV2(
 		console.log(res);
 	}
 );
+
+let list = runWandbox.getCompilers("lua");
+
+list.then(console.log).catch(console.error);

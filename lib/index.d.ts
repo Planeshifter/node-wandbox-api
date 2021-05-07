@@ -11,6 +11,10 @@ export function fromFileV2(
     dest: string | undefined
 ): void;
 
+export function getCompilers(
+    lang?: string
+): Compiler[];
+
 interface Opts {
     compiler: string,
     code: string,
@@ -31,6 +35,30 @@ interface Result {
     "program_output": string,
     "program_error": string,
     "program_message": string,
+    "api_output": string,
+    "api_error": string,
+    "api_message": string,
     permlink?: string,
     url?: string
+}
+
+interface Switch {
+	default: boolean;
+	"display-flags": string;
+	"display-name": string;
+	name: string;
+	type: string;
+}
+
+interface Compiler {
+	"compiler-option-raw": boolean;
+	"display-compile-command": string;
+	"display-name": string;
+	language: string;
+	name: string;
+	provider: number;
+	"runtime-option-raw": boolean;
+	switches: Array<Switch>;
+	templates: Array<string>;
+	version: string;
 }
