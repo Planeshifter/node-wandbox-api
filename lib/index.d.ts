@@ -11,9 +11,15 @@ export function fromFileV2(
     dest: string | undefined
 ): void;
 
+export function fromStringV3( opts: Opts ): Result | string;
+export function fromFileV3(
+    srcFile: string,
+    opts: Opts
+): Result | string;
+
 export function getCompilers(
     lang?: string
-): Compiler[];
+): Compiler[] | "No matching compilers found";
 
 interface Opts {
     compiler: string,
