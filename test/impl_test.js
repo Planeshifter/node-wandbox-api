@@ -26,16 +26,22 @@ const runWandbox = require('../lib/index');
 
 // list.then(console.log).catch(console.error);
 
-console.log("Promise StringV3");
-let res = runWandbox.fromStringV3(
-	{
-		compiler: "lua-5.4.0",
-		codes: [],
-		options: "",
-		save: true,
-		timeout: 30000,
-		code: "print(\"Hello\")"
-	},
-);
+// console.log("Promise StringV3");
+// let res = runWandbox.fromStringV3(
+// 	{
+// 		compiler: "lua-5.4.0",
+// 		codes: [],
+// 		options: "",
+// 		save: true,
+// 		timeout: 30000,
+// 		code: "print(\"Hello\")"
+// 	},
+// );
 
-res.then(console.log).catch(console.error);
+// res.then(console.log).catch(console.error);
+
+// var copy = require( 'utils-copy' );
+// var opts = copy ( require('../lib/defaults.json') );
+// const test = runWandbox.fromFileV3( './test/fixtures/gamma.cpp', opts );
+
+// test.then(console.log).catch(console.error);
