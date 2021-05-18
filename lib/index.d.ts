@@ -1,18 +1,5 @@
-export function fromStringV2(
-    opts: Opts,
-    clbk: (err: Error | null, body: Result) => void,
-    dest: string | undefined
-): void;
-
-export function fromFileV2(
-    srcFile: string,
-    opts: Opts,
-    clbk: (err: Error | null, body: Result) => void,
-    dest: string | undefined
-): void;
-
-export function fromStringV3( opts: Opts ): Result | string;
-export function fromFileV3(
+export function fromString( opts: Opts ): Result | string;
+export function fromFile(
     srcFile: string,
     opts: Opts
 ): Result | string;

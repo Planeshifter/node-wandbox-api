@@ -1,6 +1,6 @@
 {
   "name": "wandbox-api-updated",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Node.js bindings to the Wandbox API.",
   "author": {
     "name": "Chris Barwick",
@@ -59,7 +59,7 @@
     "jshint-stylish": "2.x.x",
     "mkdirp": "^0.5.1",
     "proxyquire": "^1.7.4",
-    "tap-spec": "^5.0.0",
+    "tap-spec": "^2.2.2",
     "tape": "4.x.x",
     "utils-fs-exists": "^1.0.1"
   },
