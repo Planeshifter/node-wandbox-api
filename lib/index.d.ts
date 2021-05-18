@@ -1,15 +1,12 @@
-export function fromStringV2(
-    opts: Opts,
-    clbk: (err: Error | null, body: Result) => void,
-    dest: string | undefined
-): void;
-
-export function fromFileV2(
+export function fromString( opts: Opts ): Result | string;
+export function fromFile(
     srcFile: string,
-    opts: Opts,
-    clbk: (err: Error | null, body: Result) => void,
-    dest: string | undefined
-): void;
+    opts: Opts
+): Result | string;
+
+export function getCompilers(
+    lang?: string
+): Compiler[] | "No matching compilers found";
 
 interface Opts {
     compiler: string,
@@ -31,6 +28,30 @@ interface Result {
     "program_output": string,
     "program_error": string,
     "program_message": string,
+    "api_output": string,
+    "api_error": string,
+    "api_message": string,
     permlink?: string,
     url?: string
+}
+
+interface Switch {
+	default: boolean;
+	"display-flags": string;
+	"display-name": string;
+	name: string;
+	type: string;
+}
+
+interface Compiler {
+	"compiler-option-raw": boolean;
+	"display-compile-command": string;
+	"display-name": string;
+	language: string;
+	name: string;
+	provider: number;
+	"runtime-option-raw": boolean;
+	switches: Array<Switch>;
+	templates: Array<string>;
+	version: string;
 }
