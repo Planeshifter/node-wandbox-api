@@ -1,12 +1,12 @@
-export function fromString( opts: Opts ): Result | string;
+export function fromString( opts: Opts ): Promise<Result>;
 export function fromFile(
     srcFile: string,
     opts: Opts
-): Result | string;
+): Promise<Result>;
 
 export function getCompilers(
     lang?: string
-): Compiler[] | "No matching compilers found";
+): Promise<Compiler[] | string>;
 
 interface Opts {
     compiler: string,
