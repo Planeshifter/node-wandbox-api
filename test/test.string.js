@@ -11,6 +11,8 @@ var noop = require( '@kgryte/noop' );
 var proxyquire = require( 'proxyquire' );
 var readFile = require( 'utils-fs-read-file' ).sync;
 var runWandbox = require( './../lib/string.js' );
+var string_v2 = require( './../lib/string_v2.js');
+var copy = require( 'utils-copy' );
 
 
 // FIXTURES //
@@ -27,6 +29,12 @@ var sampleExpected = require( './fixtures/sample_expected.json' );
 tape( 'main export is a function', function test( t ) {
 	t.ok( true, __filename );
 	t.equal( typeof runWandbox, 'function', 'main export is a function' );
+	t.end();
+});
+
+tape( 'stringv2 export is a function', function test( t ) {
+	t.ok( true, __filename );
+	t.equal( typeof string_v2, 'function', 'stringv2 export is a function');
 	t.end();
 });
 
@@ -89,7 +97,7 @@ tape( 'the function runs a source code string on Wandbox and saves results to fi
 		bool = exists.sync( outFile );
 		t.ok( bool, 'converted file exists' );
 
-		assert.deepEqual( res, gammaExpected );
+		assert.deepEqual( JSON.parse(res), gammaExpected );
 
 		t.end();
 	}
@@ -104,7 +112,7 @@ tape( 'the function runs a source code string on Wandbox and saves results to fi
 
 	mkdirp.sync( outDir );
 	runWandbox( outFile, sample, {
-		'options': 'warning,gnu++1y',
+		'options': 'warning,gnu++14',
 		'compiler': 'gcc-head',
 		'compiler-option-raw': '-Dx=hogefuga\n-O3'
 	}, done );
@@ -118,7 +126,7 @@ tape( 'the function runs a source code string on Wandbox and saves results to fi
 		bool = exists.sync( outFile );
 		t.ok( bool, 'output file exists' );
 
-		assert.deepEqual( res, sampleExpected );
+		assert.deepEqual( JSON.parse(res), sampleExpected );
 
 		t.end();
 	}
@@ -126,6 +134,22 @@ tape( 'the function runs a source code string on Wandbox and saves results to fi
 
 tape( 'the function runs a source code string on Wandbox', function test( t ) {
 	runWandbox( gamma, done );
+
+	function done( error, res ) {
+		if ( error ) {
+			t.ok( false, error.message );
+			return t.end();
+		}
+		t.equal( typeof res, 'object', 'returns an object' );
+
+		t.end();
+	}
+});
+
+tape( 'the function runs a source code string on Wandbox (v2)', function test( t ) {
+	var opts = copy ( require('../lib/defaults.json') );
+	opts.code = gamma;
+	string_v2(opts, done);
 
 	function done( error, res ) {
 		if ( error ) {
@@ -148,7 +172,6 @@ tape( 'the function runs a source code string on Wandbox (options)', function te
 		}
 		t.equal( typeof res, 'object', 'returns an object' );
 
-
 		// Result object has `permlink` and `url` keys since `save=true`...
 		t.equal( typeof res.permlink, 'string', 'object has `permlink` key' );
 		t.equal( typeof res.url, 'string', 'object has `url` key' );
@@ -158,17 +181,7 @@ tape( 'the function runs a source code string on Wandbox (options)', function te
 });
 
 tape( 'the function calls callback with an error if Wandbox API does not respond to request', function test( t ) {
-	var failingRequest = {
-		'post': function( url, opts, clbk ) {
-			setTimeout( onTimeout, 0 );
-			function onTimeout() {
-				clbk( new Error( 'beep' ) );
-			}
-		}
-	};
-
-	var runWandboxCorrupted = proxyquire( './../lib/string.js', { request: failingRequest } );
-	runWandboxCorrupted( gamma, done );
+	runWandbox( gamma, {'timeout': 0}, done);
 
 	function done( error ) {
 		t.equal( error instanceof Error, true, 'returns an error object' );

@@ -9,6 +9,8 @@ var mkdirp = require( 'mkdirp' );
 var exists = require( 'utils-fs-exists' );
 var noop = require( '@kgryte/noop' );
 var runWandbox = require( './../lib/file.js' );
+var file_v2 = require( './../lib/file_v2.js');
+var copy = require( 'utils-copy' );
 
 
 // FIXTURES //
@@ -22,6 +24,12 @@ var sampleExpected = require( './fixtures/sample_expected.json' );
 tape( 'main export is a function', function test( t ) {
 	t.ok( true, __filename );
 	t.equal( typeof runWandbox, 'function', 'main export is a function' );
+	t.end();
+});
+
+tape( 'file_v2 export is a function', function test( t ) {
+	t.ok( true, __filename );
+	t.equal( typeof file_v2, 'function', 'main export is a function' );
 	t.end();
 });
 
@@ -84,7 +92,7 @@ tape( 'the function runs a source code file on Wandbox and saves results to file
 		bool = exists.sync( outFile );
 		t.ok( bool, 'converted file exists' );
 
-		assert.deepEqual( res, gammaExpected );
+		assert.deepEqual( JSON.parse(res), gammaExpected );
 
 		t.end();
 	}
@@ -113,7 +121,7 @@ tape( 'the function runs a source code file on Wandbox and saves results to file
 		bool = exists.sync( outFile );
 		t.ok( bool, 'output file exists' );
 
-		assert.deepEqual( res, sampleExpected );
+		assert.deepEqual( JSON.parse(res), sampleExpected );
 
 		t.end();
 	}
@@ -121,6 +129,22 @@ tape( 'the function runs a source code file on Wandbox and saves results to file
 
 tape( 'the function runs a source code file on Wandbox', function test( t ) {
 	runWandbox( './test/fixtures/gamma.cpp', done );
+
+	function done( error, res ) {
+		if ( error ) {
+			t.ok( false, error.message );
+			return t.end();
+		}
+		t.equal( typeof res, 'object', 'returns an object' );
+
+		t.end();
+	}
+});
+
+tape( 'the function runs a source code file on Wandbox (v2)', function test( t ) {
+	//runWandbox( './test/fixtures/gamma.cpp', done );
+	var opts = copy ( require('../lib/defaults.json') );
+	file_v2( './test/fixtures/gamma.cpp', opts, done );
 
 	function done( error, res ) {
 		if ( error ) {

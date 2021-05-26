@@ -1,6 +1,6 @@
 Node Wandbox API
 ===
-[![NPM version][npm-image]][npm-url] [![Build Status][build-image]][build-url] [![Coverage Status][coverage-image]][coverage-url] [![Dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][build-image]][build-url] [![Dependencies][dependencies-image]][dependencies-url]
 
 > Access Social Compilation Service [Wandbox][wandbox] via API from Node.js.
 
@@ -8,14 +8,63 @@ Node Wandbox API
 ## Installation
 
 ``` bash
-$ npm install wandbox-api
+$ npm install wandbox-api-updated
 ```
 
+# > v1.0.0 Usage
+``` javascript
+var { fromString, fromFile, getCompilers } = require('../lib/index');
+
+fromString({
+	code: "print(\"Hello World!\")",
+	compiler: "lua-5.4.0",
+}).then(console.log).catch(console.error);
+
+fromFile("./test/fixtures/gamma.cpp",
+	{
+		compiler: "gcc-head"
+	}
+).then(console.log).catch(console.error);
+
+getCompilers("Lua").then(console.log).catch(console.error);
+```
+
+# < v1.0.0 Usage
+
+## V2 Usage
+``` javascript
+var { fromFileV2, fromStringV2 } = require( 'wandbox-api-updated' );
+```
+
+#### fromFileV2( srcFile, opts, clbk [, dest] )
+#### fromStringV2( opts, clbk [, dest])
+
+With opts now being required for `fromStringV2`, setting `opts.code` to the `src` is replacing the `code` parameter of `runWandbox`.
+
+## fromStringV2 Example
+``` javascript
+const runWandbox = require('../lib/index');
+
+let res = runWandbox.fromStringv2(
+	{
+		compiler: "lua-5.4.0",
+		codes: [],
+		options: "",
+		code: "print 'Hello, Wandbox!'",
+		save: false,
+		timeout: 30000
+	},
+	function done(error, res) {
+		console.log(error);
+		console.log(res);
+	}
+);
+```
 
 ## Usage
 
 ``` javascript
-var runWandbox = require( 'wandbox-api' );
+var runWandbox = require( 'wandbox-api-updated' );
 ```
 
 #### runWandbox( [dest,] src[, opts], clbk )
@@ -152,7 +201,7 @@ runWandbox.fromString( code, {
 ## Examples
 
 ``` javascript
-var runWandbox = require( 'wandbox-api' );
+var runWandbox = require( 'wandbox-api-updated' );
 
 // String:
 
@@ -190,7 +239,7 @@ $ DEBUG=* node ./examples/index.js
 To use the module as a general utility, install the module globally
 
 ``` bash
-$ npm install -g wandbox-api
+$ npm install -g wandbox-api-updated
 ```
 
 
@@ -293,26 +342,17 @@ $ make view-browser-tests
 
 ## Copyright
 
-Copyright &copy; 2016. Philipp Burckhardt.
+Copyright &copy; 2021. Chris Barwick.
 
 
-[npm-image]: http://img.shields.io/npm/v/wandbox-api.svg
-[npm-url]: https://npmjs.org/package/wandbox-api
+[npm-image]: http://img.shields.io/npm/v/wandbox-api-updated.svg
+[npm-url]: https://npmjs.org/package/wandbox-api-updated
 
-[build-image]: http://img.shields.io/travis/Planeshifter/node-wandbox-api/master.svg
-[build-url]: https://travis-ci.org/Planeshifter/node-wandbox-api
+[build-image]: http://img.shields.io/travis/TinyPandas/node-wandbox-api/master.svg
+[build-url]: https://travis-ci.org/github/TinyPandas/node-wandbox-api
 
-[coverage-image]: https://img.shields.io/codecov/c/github/Planeshifter/node-wandbox-api/master.svg
-[coverage-url]: https://codecov.io/github/Planeshifter/node-wandbox-api?branch=master
-
-[dependencies-image]: http://img.shields.io/david/Planeshifter/node-wandbox-api.svg
-[dependencies-url]: https://david-dm.org/Planeshifter/node-wandbox-api
-
-[dev-dependencies-image]: http://img.shields.io/david/dev/Planeshifter/node-wandbox-api.svg
-[dev-dependencies-url]: https://david-dm.org/dev/Planeshifter/node-wandbox-api
-
-[github-issues-image]: http://img.shields.io/github/issues/Planeshifter/node-wandbox-api.svg
-[github-issues-url]: https://github.com/Planeshifter/node-wandbox-api/issues
+[dependencies-image]: http://img.shields.io/david/TinyPandas/node-wandbox-api.svg
+[dependencies-url]: https://david-dm.org/TinyPandas/node-wandbox-api
 
 [tape]: https://github.com/substack/tape
 [istanbul]: https://github.com/gotwarlost/istanbul
